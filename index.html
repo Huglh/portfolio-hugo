@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hugo Thiago — Portfólio</title>
+<meta name="description" content="Portfólio profissional de Hugo Thiago — Estudante de TI, Desenvolvedor e Suporte Técnico.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<!-- Fontes -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome (ícones) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header id="header" class="header">
+  <nav class="nav container">
+    <a href="#home" class="logo" data-scroll="home">
+      <span class="accent">&lt;</span>Portfolio<span class="accent">/Hugo&gt;</span>
+    </a>
+
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#home" class="nav-link" data-scroll="home">Início</a></li>
+      <li><a href="#about" class="nav-link" data-scroll="about">Sobre</a></li>
+      <li><a href="#experience" class="nav-link" data-scroll="experience">Experiência</a></li>
+      <li><a href="#certificates" class="nav-link" data-scroll="certificates">Certificados</a></li>
+      <li><a href="#contact" class="nav-link" data-scroll="contact">Contato</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <label class="theme-switch" data-tooltip="Alternar tema claro/escuro">
+        <i class="fa-solid fa-moon theme-icon theme-icon--moon"></i>
+        <span class="switch" data-slot="switch" id="themeSwitch" role="switch" aria-checked="false" tabindex="0">
+          <span class="switch-thumb" data-slot="switch-thumb"></span>
+        </span>
+        <i class="fa-solid fa-sun theme-icon theme-icon--sun"></i>
+      </label>
+
+      <button class="cmd-trigger" id="cmdTrigger" aria-label="Abrir console de comandos">
+        <i class="fa-solid fa-terminal"></i>
+        <span>Console</span>
+        <kbd>Ctrl K</kbd>
+      </button>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" data-tooltip="Menu">
+        <i class="fa-solid fa-bars" id="menuIcon"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- ===== COMMAND PALETTE ("console" — estilo terminal tático) ===== -->
+<div class="cmd-overlay" id="cmdOverlay" hidden>
+  <div class="cmd-palette" role="dialog" aria-modal="true" aria-label="Console de comandos">
+    <div class="cmd-input-wrap">
+      <i class="fa-solid fa-chevron-right cmd-prompt"></i>
+      <input type="text" id="cmdInput" class="cmd-input" placeholder="Digite um comando ou seção..." autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="cmd-list" id="cmdList"></div>
+  </div>
+</div>
+
+<!-- ===== DRAWER: menu mobile (painel deslizante) ===== -->
+<div class="drawer-overlay" id="drawerOverlay" hidden>
+  <div class="drawer-panel" data-slot="drawer-content" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+    <div class="drawer-handle"></div>
+    <div class="drawer-header">
+      <span class="logo"><span class="accent">&lt;</span>Portfolio<span class="accent">/Hugo&gt;</span></span>
+      <button class="drawer-close" id="drawerClose" aria-label="Fechar menu" data-tooltip="Fechar"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="#home" data-scroll="home"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="#about" data-scroll="about"><i class="fa-solid fa-user"></i> Sobre</a>
+      <a href="#experience" data-scroll="experience"><i class="fa-solid fa-briefcase"></i> Experiência</a>
+      <a href="#certificates" data-scroll="certificates"><i class="fa-solid fa-award"></i> Certificados</a>
+      <a href="#contact" data-scroll="contact"><i class="fa-solid fa-envelope"></i> Contato</a>
+    </nav>
+    <button class="cmd-trigger drawer-cmd-trigger" id="cmdTriggerMobile">
+      <i class="fa-solid fa-terminal"></i><span>Abrir Console</span>
+    </button>
+  </div>
+</div>
+
+<main>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <div class="hero-glow hero-glow--amber"></div>
+    <div class="hero-glow hero-glow--blue"></div>
+
+    <div class="container hero-content">
+      <div class="reveal" data-reveal="scale">
+        <div class="avatar-ring">
+          <div class="avatar-inner">
+            <!-- Componente Avatar: tenta carregar a imagem; se não existir, mostra o fallback (iniciais) -->
+            <span class="avatar" data-slot="avatar">
+              <img
+                class="avatar-image"
+                data-slot="avatar-image"
+                src="assets/foto.jpg"
+                alt="Foto de perfil de Hugo Thiago"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              >
+              <span class="avatar-fallback" data-slot="avatar-fallback">TI</span>
+            </span>
+          </div>
+          <span class="status-dot" title="Disponível para oportunidades"></span>
+        </div>
+      </div>
+
+      <div class="reveal" data-reveal="up" data-delay="150">
+        <h1 class="hero-name">Hugo Thiago Lima Menezes</h1>
+        <p class="hero-role">Estudante de TI | Desenvolvedor | Suporte Técnico</p>
+      </div>
+
+      <p class="hero-tagline reveal" data-reveal="up" data-delay="300">
+        Transformando conhecimento em soluções digitais.
+      </p>
+
+      <div class="hero-actions reveal" data-reveal="up" data-delay="450">
+        <button class="btn btn--outline-amber" data-scroll="contact">Contato</button>
+        <button class="btn btn--outline-blue" id="downloadCvBtn">
+          <i class="fa-solid fa-download"></i> Baixar CV
+        </button>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" data-scroll="about" aria-hidden="true">
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- ===== Sobre Mim ===== -->
+  <section id="about" class="section section--dark">
+    <div class="container">
+      <div class="section-head reveal" data-reveal="up">
+        <p class="eyebrow">Sobre Mim</p>
+        <h2>Quem eu sou</h2>
+        <span class="divider"></span>
+      </div>
+
+      <div class="about-grid">
+        <div class="card hud-card reveal" data-reveal="left" data-delay="150">
+          <h3>Objetivo</h3>
+          <p class="muted">
+            Busco uma oportunidade na área de Tecnologia da Informação para aplicar e ampliar 
+            os conhecimentos adquiridos na graduação em Sistemas de Informação. Tenho 
+            interesse em aprender novas tecnologias, desenvolver minhas habilidades técnicas e 
+            crescer profissionalmente, contribuindo com dedicação, responsabilidade e 
+            comprometimento para os objetivos da equipe e da organização.
+          </p>
+        </div>
+
+        <div class="card hud-card reveal" data-reveal="right" data-delay="250">
+          <h3>Soft Skills</h3>
+          <div class="skills-grid" id="softSkills"></div>
+        </div>
+      </div>
+
+      <div class="card hud-card hard-skills-card reveal" data-reveal="up" data-delay="350">
+        <h3 class="text-center">Hard Skills</h3>
+        <div class="badges" id="hardSkills"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Experiência ===== -->
+  <section id="experience" class="section section--alt">
+    <div class="container">
+      <div class="section-head reveal" data-reveal="up">
+        <p class="eyebrow">Trajetória</p>
+        <h2>Formação &amp; Experiência</h2>
+        <span class="divider"></span>
+      </div>
+
+      <div class="experience-grid">
+        <div class="reveal" data-reveal="left">
+          <div class="track-title">
+            <span class="track-icon track-icon--amber"><i class="fa-solid fa-briefcase"></i></span>
+            <h3>Experiência</h3>
+          </div>
+          <div class="timeline" id="experienceList"></div>
+        </div>
+
+        <div class="reveal" data-reveal="right">
+          <div class="track-title">
+            <span class="track-icon track-icon--blue"><i class="fa-solid fa-graduation-cap"></i></span>
+            <h3>Formação</h3>
+          </div>
+          <div class="timeline" id="educationList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Certificados ===== -->
+  <section id="certificates" class="section section--alt">
+    <div class="container">
+      <div class="section-head reveal" data-reveal="up">
+        <p class="eyebrow">Qualificações</p>
+        <h2>Licenças &amp; Certificados</h2>
+        <span class="divider"></span>
+        <p class="section-subtitle">
+          Certificações e cursos que complementam minha formação técnica
+        </p>
+      </div>
+
+      <div class="grid-3" id="certificatesList"></div>
+
+      <nav class="pagination" id="certificatesPagination" aria-label="Paginação de certificados"></nav>
+    </div>
+  </section>
+
+  <!-- ===== Contato ===== -->
+  <section id="contact" class="section section--alt">
+    <div class="container">
+      <div class="section-head reveal" data-reveal="up">
+        <p class="eyebrow">Fale Comigo</p>
+        <h2>Contato</h2>
+        <span class="divider"></span>
+        <p class="section-subtitle">
+          Tem algum projeto em mente ou quer bater um papo? Entre em contato comigo!
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="card hud-card reveal" data-reveal="left">
+          <h3>Envie uma mensagem</h3>
+          <form id="contactForm" novalidate>
+            <div class="field">
+              <label for="name">Nome</label>
+              <input type="text" id="name" name="name" placeholder="Seu nome" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seu-email@exemplo.com" autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="subject">Assunto</label>
+              <div class="select" data-slot="select">
+                <button type="button" class="select-trigger" id="subjectTrigger" data-slot="select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                  <span id="subjectValue" data-slot="select-value">Selecione um assunto</span>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="select-content" id="subjectContent" data-slot="select-content" hidden>
+                  <button type="button" class="select-item" data-value="Oportunidade de estágio">Oportunidade de estágio</button>
+                  <button type="button" class="select-item" data-value="Freelance / projeto pontual">Freelance / projeto pontual</button>
+                  <button type="button" class="select-item" data-value="Dúvida técnica">Dúvida técnica</button>
+                  <button type="button" class="select-item" data-value="Outro">Outro</button>
+                </div>
+                <input type="hidden" id="subject" name="subject">
+              </div>
+            </div>
+            <div class="field">
+              <label for="message">Mensagem</label>
+              <textarea id="message" name="message" rows="6" placeholder="Sua mensagem..."></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--block">
+              <i class="fa-solid fa-paper-plane"></i> Enviar Mensagem
+            </button>
+          </form>
+        </div>
+
+        <div class="card hud-card reveal" data-reveal="right" data-delay="150">
+          <div class="card-header-row">
+            <h3>Conecte-se comigo</h3>
+
+            <div class="dropdown" data-slot="dropdown-menu">
+              <button class="btn btn--outline-blue btn--sm dropdown-trigger" id="shareTrigger" data-slot="dropdown-menu-trigger" aria-haspopup="true" aria-expanded="false">
+                <i class="fa-solid fa-share-nodes"></i> Compartilhar
+              </button>
+              <div class="dropdown-content" id="shareMenu" data-slot="dropdown-menu-content" hidden>
+                <button class="dropdown-item" data-share="copy"><i class="fa-solid fa-link"></i> Copiar link do perfil</button>
+                <button class="dropdown-item" data-share="email"><i class="fa-solid fa-envelope"></i> Compartilhar por e-mail</button>
+                <button class="dropdown-item" data-share="whatsapp"><i class="fa-brands fa-whatsapp"></i> Compartilhar no WhatsApp</button>
+              </div>
+            </div>
+          </div>
+          <div class="social-list" id="socialList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="logo">
+      <span class="accent">&lt;</span>Portfolio<span class="accent">/Hugo&gt;</span>
+    </div>
+    <div class="footer-meta">
+      <span>Portfólio desenvolvido em <span id="year"></span></span>
+      <span class="footer-tag" title="Nas horas vagas: Counter-Strike"><i class="fa-solid fa-gamepad"></i></span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ===== ALERT DIALOG: Baixar CV ===== -->
+<div class="dialog-overlay" id="cvDialogOverlay" hidden>
+  <div class="dialog-content" role="alertdialog" aria-modal="true" aria-labelledby="cvDialogTitle" aria-describedby="cvDialogDesc">
+    <div class="dialog-header">
+      <h3 id="cvDialogTitle">Baixar currículo</h3>
+      <p id="cvDialogDesc" class="muted">
+        <strong>Currículo disponível para download.</strong><br>
+        Clique em <strong>"Baixar PDF"</strong> para acessar a versão mais recente do meu currículo.
+      </p>
+    </div>
+    <div class="dialog-footer">
+      <button class="btn btn--outline-blue" id="cvDialogCancel">Fechar</button>
+      <a class="btn btn--primary" id="cvDialogConfirm" href="assets/Curriculo_Hugo_Thiago_Lima_Menezes.pdf" download>
+        <i class="fa-solid fa-download"></i> Baixar PDF
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== POPOVER: proficiência da hard skill ===== -->
+<div class="popover-box" id="skillPopover" hidden data-slot="popover-content">
+  <p class="popover-title" id="skillPopoverTitle"></p>
+  <p class="popover-value" id="skillPopoverValue"></p>
+</div>
+
+<!-- ===== HOVER CARD: preview dos links sociais ===== -->
+<div class="hover-card" id="socialHoverCard" hidden data-slot="hover-card-content">
+  <div class="hover-card-icon" id="hoverCardIcon"></div>
+  <div>
+    <p class="hover-card-name" id="hoverCardName"></p>
+    <p class="hover-card-desc" id="hoverCardDesc"></p>
+  </div>
+</div>
+
+<!-- Container de Toasts -->
+<div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
